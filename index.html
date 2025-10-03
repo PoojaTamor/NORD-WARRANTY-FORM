@@ -7,6 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <title>NORD WARRANTY FORM</title>
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -33,7 +35,7 @@
 <div>
         <h1>Service <br> Warranty Card</h1>
 <p>Please fill in the details below to <span class="d-block">activate your warranty service.</span></p>
-                      <div class="button-explore"  >
+                      <div class="button-explore firstbtn"  >
     <div class="button-inner">
       <div class="button-inner-text"> Get Covered <svg width="10" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M25.6641 15.0621L0.979807 29.3136L0.979809 0.810665L25.6641 15.0621Z" fill="white"/>
@@ -61,17 +63,17 @@
 <div class="detailsbox">
   <div class="input-row">
     <label>Full Name:</label>
-    <input type="text" value="John Doe ">
+    <input type="text" placeholder="John Doe " required >
   </div>
 
   <div class="input-row">
     <label>Phone Number:</label>
-    <input type="text" value="+1 234 567 8901">
+    <input type="text" placeholder="+1 234 567 8901"  required >
   </div>
 
   <div class="input-row">
     <label>Email:</label>
-    <input type="email" value="john.doe@example.com">
+    <input type="email" placeholder="john.doe@example.com" required>
   </div>
 </div>
 
@@ -133,16 +135,16 @@
   </div> -->
   <div class="input-row">
     <label>Registration Number :</label>
-    <input type="text" value="ABC1234">
+    <input type="text" placeholder="ABC1234" required>
   </div>
 
   <div class="input-row">
     <label>Year of Manufacture:</label>
-    <input type="text" value="2020">
+    <input type="text" placeholder="2020" required>
   </div>
      <div class="input-row">
     <label> Color :</label>
-    <input type="text" value="Blue">
+    <input type="text" placeholder="Blue"  required>
   </div>
 
 </div>
@@ -197,7 +199,8 @@
 </div>
 </div>
     </div>
-    <div class="Our_Services_box  sub_box" data-box="services">
+<!-- <div class="All_sub_box"> -->
+      <div class="sub_box" data-box="ppf_services">
         <div class="full-detais-box">
       <div class="heading">
 
@@ -224,15 +227,336 @@
 </div>
     </div>
 
+    <div class="sub_box" data-box="ppf_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block">PPF</span>Protection Coverage</h2>
+
+  </div>
+<div class="subdetailbox checkboxservice">
+
+  <div class="row gx-0 gy-4">
+
+    <div class="col-6">
+      <input type="radio" id="full" name="ppf_coverage" value="full" class="protection-radio full-radio">
+      <label class="radio-labels" for="full"  >FULL AREA</label>
+    </div>
+
+<div class="col-6  ">
+  <div class="dropdown parts-dropdown">
+    
+    <button class="btn radio-labels dropdown-toggle w-100 d-flex justify-content-between align-items-center parcelbtn"
+            type="button" id="partialBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+      <input type="radio" id="partial" name="ppf_coverage" value="partial" class="protection-radio me-2 partial-radio">
+      PARTIAL AREA
+    </button>
+
+    <ul class="dropdown-menu parts-list" aria-labelledby="partialBtn">
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Front)">Door (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Rear)">Door (Driver Side Rear)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Fender (Driver Side Front)">Fender (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Front Bumper">Front Bumper</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Roof">Roof</a></li>
+      <li><a class="dropdown-item other-option" href="#" data-value="Other">Other</a></li>
+    </ul>
+  </div>
 
 
+</div>
+
+<div  class="col-12 selected-tags ">
+</div>
+</div>
+
+
+
+</div>
+</div>
+    </div>
+    
+
+<div class="sub_box" data-box="ceramic_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block">Ceramic</span> Warranty Period</h2>
+
+  </div>
+<div class="subdetailbox yearbox">
+  <select>
+    <option disabled selected>Select years</option>
+    <option value="1">1 Year</option>
+    <option value="3">3 Years</option>
+    <option value="5">5 Years</option>
+    <option value="7">7 Years</option>
+  </select>
+</div>
+</div>
+    </div>
+        <div class="sub_box" data-box="ceramic_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block">Ceramic</span>Coverage <br>Area</h2>
+
+  </div>
+<div class="subdetailbox checkboxservice">
+
+  <div class="row gx-0 gy-4">
+
+    <div class="col-6">
+      <input type="radio" id="fulll" name="Ceramic_coverage" value="full" class="protection-radio full-radio">
+      <label class="radio-labels" for="fulll">FULL AREA</label>
+    </div>
+
+<div class="col-6  ">
+  <div class="dropdown parts-dropdown">
+    
+    <button class="btn radio-labels dropdown-toggle w-100 d-flex justify-content-between align-items-center parcelbtn"
+            type="button" id="partialBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+      <input type="radio" id="partial" name="Ceramic_coverage" value="partial" class="protection-radio me-2 partial-radio">
+      PARTIAL AREA
+    </button>
+
+    <ul class="dropdown-menu parts-list" aria-labelledby="partialBtn">
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Front)">Door (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Rear)">Door (Driver Side Rear)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Fender (Driver Side Front)">Fender (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Front Bumper">Front Bumper</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Roof">Roof</a></li>
+      <li><a class="dropdown-item other-option" href="#" data-value="Other">Other</a></li>
+    </ul>
+  </div>
+
+
+</div>
+
+<div  class="col-12 selected-tags ">
+</div>
+</div>
+
+
+
+</div>
+</div>
+    </div>
+<div class="sub_box" data-box="graphene_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block"> Graphene </span> Warranty Period</h2>
+
+  </div>
+<div class="subdetailbox yearbox">
+  <select>
+    <option disabled selected>Select years</option>
+    <option value="5 Years">5 Years</option>
+    <option value="10Years">10 Years</option>
+  </select>
+</div>
+</div>
+    </div>
+        <div class="sub_box" data-box="graphene_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block">Graphene</span>Coverage <br>Area</h2>
+
+  </div>
+<div class="subdetailbox checkboxservice">
+
+  <div class="row gx-0 gy-4">
+
+    <div class="col-6">
+      <input type="radio" id="fullll" name="Graphene_coverage" value="full" class="protection-radio full-radio">
+      <label class="radio-labels" for="fullll">FULL AREA</label>
+    </div>
+
+<div class="col-6  ">
+  <div class="dropdown parts-dropdown">
+    
+    <button class="btn radio-labels dropdown-toggle w-100 d-flex justify-content-between align-items-center parcelbtn"
+            type="button" id="partialBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+      <input type="radio" id="partial" name="Graphene_coverage" value="partial" class="protection-radio me-2 partial-radio">
+      PARTIAL AREA
+    </button>
+
+    <ul class="dropdown-menu parts-list" aria-labelledby="partialBtn">
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Front)">Door (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Rear)">Door (Driver Side Rear)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Fender (Driver Side Front)">Fender (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Front Bumper">Front Bumper</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Roof">Roof</a></li>
+      <li><a class="dropdown-item other-option" href="#" data-value="Other">Other</a></li>
+    </ul>
+  </div>
+
+
+</div>
+
+<div  class="col-12 selected-tags ">
+</div>
+</div>
+
+
+
+</div>
+</div>
+    </div>
+    <div class="sub_box" data-box="windowfilm_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block"> Windowfilm </span> Warranty Period</h2>
+
+  </div>
+<div class="subdetailbox yearbox">
+  <select>
+    <option disabled selected>Select years</option>
+    <option value="5 Years">5 Years</option>
+    <option value="10Years">10 Years</option>
+  </select>
+</div>
+</div>
+    </div>
+        <div class="sub_box" data-box="windowfilm_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block">Windowfilm</span>Coverage <br>Area
+</h2>
+
+  </div>
+<div class="subdetailbox checkboxservice ">
+
+  <div class="row gx-0 gy-4">
+
+    <div class="col-6">
+      <input type="radio" id="windowfull" name="Windowfilm_coverage" value="full" class="protection-radio full-radio">
+      <label class="radio-labels" for="windowfull">FULL AREA</label>
+    </div>
+
+<div class="col-6  ">
+  <div class="dropdown parts-dropdown">
+    
+    <button class="btn radio-labels dropdown-toggle w-100 d-flex justify-content-between align-items-center parcelbtn"
+            type="button" id="partialBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+      <input type="radio" id="partial" name="Windowfilm_coverage" value="partial" class="protection-radio me-2 partial-radio">
+      PARTIAL AREA
+    </button>
+
+    <ul class="dropdown-menu parts-list" aria-labelledby="partialBtn">
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Front)">Door (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Door (Driver Side Rear)">Door (Driver Side Rear)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Fender (Driver Side Front)">Fender (Driver Side Front)</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Front Bumper">Front Bumper</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Roof">Roof</a></li>
+      <li><a class="dropdown-item other-option" href="#" data-value="Other">Other</a></li>
+    </ul>
+  </div>
+
+
+</div>
+
+<div  class="col-12 selected-tags ">
+</div>
+</div>
+
+
+
+</div>
+</div>
+    </div>
+            <div class="sub_box" data-box="date_services">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="d-block">Date And</span> Location <br>Area
+</h2>
+
+  </div>
+<div class="subdetailbox  ">
+
+  <div class="row gx-0 gy-4">
+
+    <div class="col-6 input-row">
+     <select id="Store" class="form-select" >
+  <option value="" disabled selected>Select Store</option>
+</select>
+    </div>
+
+<div class="col-6  ">
+      
+       <input type="text" id="serviceDate" class=" custom-input dateinput" placeholder="Select Date" name="dateInput" autocomplete="off" required>
+</div>
+
+<div  class="col-12 selected-tags ">
+</div>
+</div>
+
+
+
+</div>
+</div>
+    </div>
+<!-- </div> -->
+    <div class="Uplode_box " data-box="uplode">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2><span class="">Snap. Share.  <br>Secure your</span> <br> proof.</h2>
+
+  </div>
+<div class="ubloade_pic">
+  <input type="file" id="fileInput" accept="image/*" hidden>
+  <label for="fileInput" class="upload-btn">Upload picture</label>
+  <div class="plus">
+    <svg width="50" height="50" viewBox="0 0 108 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M42.2356 108.198V65.8389H0.411558V43.2689H42.2356V0.910069H65.8752V43.2689H107.592V65.8389H65.8752V108.198H42.2356Z" fill="#EB4A14"/>
+    </svg>
+  </div>
+  <div class="overlaer"></div>
+</div>
+
+</div>
+    </div>
+        <div class="final-box" data-box="submit-box">
+        <div class="full-detais-box">
+      <div class="heading">
+
+        <h2> <span class="d-block">Write the </span>  Total Amount Paid
+        <maid class="d-block">for this service</maid>   </h2>
+
+  </div>
+<div class="finaldetailsbox">
+<div>
+  <input type="text">
+</div>
+<div class="agree-box">
+  <input type="checkbox" id="aggree" name="agree">
+  <label for="aggree">I have read and agree to the Terms & Conditions of this <span class="d-block"> warranty.</span></label>
+</div>
+
+                      <div class="button-explore"  >
+    <div class="button-inner" id="submit-btn">
+      <div class="button-inner-text"> submit 
+</div>
+      <div class="button-inner-text-hover">submit
+</div>
+    </div>
+    </div>
+</div>
+
+</div>
+    </div>
   </div>
 </div>
 
   </div>
     </div>
     <!-- <div class="col-12">
-      <div class="p-3 border bg-light">Custom column padding</div>
+      <div class="p-3 border bg-light"> thankyou</div>
     </div> -->
   </div>
 </form>
@@ -243,6 +567,8 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <script>
     document.querySelectorAll(".box").forEach(box => {
   box.addEventListener("click", () => {
@@ -253,6 +579,350 @@
 
 </script>
 
+
+
+<script>
+  flatpickr("#serviceDate", {
+  dateFormat: "d-m-Y", 
+  allowInput: true,
+  disableMobile: true
+});
+</script>
+
+<script>
+  function initProtectionRadios(serviceBox) {
+  const dropdown = serviceBox.querySelector('.parts-dropdown');
+  const partsList = serviceBox.querySelector('.parts-list');
+  const tagsContainer = serviceBox.querySelector('.selected-tags');
+  const fullRadio = serviceBox.querySelector('.full-radio');
+  const partialRadio = serviceBox.querySelector('.partial-radio');
+  let selectedParts = [];
+
+  function resetDropdownItems() {
+    partsList.querySelectorAll('.dropdown-item').forEach(item => {
+      item.innerHTML = item.getAttribute('data-value');
+    });
+  }
+
+  function renderTags() {
+    tagsContainer.innerHTML = '';
+    selectedParts.forEach(val => {
+      const tag = document.createElement('span');
+      tag.classList.add('badge');
+      tag.textContent = val;
+      tagsContainer.appendChild(tag);
+    });
+  }
+
+  function toggleSelection(element, value) {
+    const index = selectedParts.indexOf(value);
+    partialRadio.checked = true;
+    fullRadio.checked = false;
+
+    if (index === -1) {
+      selectedParts.push(value);
+      element.innerHTML = value + ' <b class="checkmark">&#10003;</b>';
+    } else {
+      selectedParts.splice(index, 1);
+      element.innerHTML = value;
+    }
+    renderTags();
+  }
+
+  // Radio change
+  serviceBox.querySelectorAll('.protection-radio').forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.value === 'partial' && radio.checked) {
+        dropdown.style.display = 'block';
+      } else if (radio.value === 'full' && radio.checked) {
+        selectedParts = [];
+        renderTags();
+        resetDropdownItems();
+      }
+    });
+  });
+
+  // Dropdown item click
+  partsList.addEventListener('click', function(e) {
+    const item = e.target.closest('.dropdown-item');
+    if (!item) return;
+    e.preventDefault();
+    e.stopPropagation(); // prevent dropdown from closing on Other click
+
+    if (item.classList.contains('other-option')) {
+      if (!serviceBox.querySelector('.other-input')) {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Enter custom part';
+        input.classList.add('other-input', 'form-control', 'mt-2');
+        dropdown.insertAdjacentElement('afterend', input);
+        input.focus();
+
+        input.addEventListener('blur', function() {
+          const val = input.value.trim();
+          if (val) {
+            const newItem = document.createElement('li');
+            const newLink = document.createElement('a');
+            newLink.classList.add('dropdown-item');
+            newLink.href = '#';
+            newLink.setAttribute('data-value', val);
+            newLink.textContent = val;
+            newItem.appendChild(newLink);
+            partsList.insertBefore(newItem, partsList.lastElementChild);
+            toggleSelection(newLink, val);
+          }
+          input.remove();
+        });
+      }
+    } else {
+      toggleSelection(item, item.getAttribute('data-value'));
+    }
+  });
+}
+
+// Initialize all boxes
+document.querySelectorAll('.checkboxservice').forEach(initProtectionRadios);
+
+</script>
+
+<script>
+  const fileInput = document.getElementById("fileInput");
+  const uploadBox = document.querySelector(".ubloade_pic");
+  const overlay = document.querySelector(".overlaer");
+
+  fileInput.addEventListener("change", function () {
+    if (this.files && this.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        uploadBox.style.backgroundImage = `url(${e.target.result})`;
+        overlay.classList.add("active"); // overlay black ho jaye
+      };
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+</script>
+
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const allcard = document.querySelector(".allcard");
+  const getCoveredBtn = document.querySelector(".firstbtn"); 
+
+  const steps = [
+    document.querySelector('[data-box="personal"]'),
+    document.querySelector('[data-box="vehicle"]'),
+    document.querySelector('[data-box="services"]'),
+    document.querySelector('[data-box="uplode"]'),
+    document.querySelector('[data-box="submit-box"]')
+  ];
+
+  // 🔒 Sab box lock karo
+  steps.forEach(step => step.classList.add("locked"));
+
+  // Function: Step unlock
+  function unlockStep(step) {
+    step.classList.remove("locked");
+  }
+
+  // Function: check required inputs
+  function allFilled(step) {
+    let inputs = step.querySelectorAll("input[required], select[required]");
+    return Array.from(inputs).every(input => input.value.trim() !== "");
+  }
+
+  // 🔹 Get Covered click → sirf personal unlock
+  getCoveredBtn.addEventListener("click", function () {
+    allcard.style.overflowX = "auto"; 
+    unlockStep(steps[0]); 
+    steps[0].scrollIntoView({ behavior: "smooth", inline: "start" });
+  });
+
+  // 🔹 Har step ke liye check karo → sab filled hone par hi agla unlock ho
+  steps.forEach((step, index) => {
+    let inputs = step.querySelectorAll("input[required], select[required]");
+    inputs.forEach(inp => {
+      inp.addEventListener("input", function () {
+        if (allFilled(step)) {
+          if (index + 1 < steps.length && steps[index + 1].classList.contains("locked")) {
+            unlockStep(steps[index + 1]); 
+            steps[index + 1].scrollIntoView({
+              behavior: "smooth",
+              inline: "start"
+            });
+          }
+        }
+      });
+    });
+  });
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  // ✅ All checkboxes
+  const serviceCheckboxes = document.querySelectorAll(".Our_Services_box input[type='checkbox']");
+
+  // ✅ All sub boxes including date
+  const subBoxes = document.querySelectorAll(".sub_box");
+  const dateBox = document.querySelector('[data-box="date_services"]');
+
+  // Service → subBox mapping
+  const serviceMap = {
+    ppf: "ppf_services",
+    ceramic: "ceramic_services",
+    graphene: "graphene_services",
+    windowfilm: "windowfilm_services"
+  };
+
+  // hide all sub boxes initially
+  subBoxes.forEach(box => box.classList.remove("active"));
+  if (dateBox) dateBox.classList.remove("active");
+
+  serviceCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", function () {
+      const subBoxClass = serviceMap[this.id];
+
+      // Show or hide related sub boxes
+      document.querySelectorAll(`[data-box="${subBoxClass}"]`).forEach(box => {
+        box.classList.toggle("active", this.checked);
+      });
+
+      // Check if any service is selected
+      const anySelected = Array.from(serviceCheckboxes).some(cb => cb.checked);
+
+      if (anySelected) {
+        dateBox.classList.add("active");
+        // always append dateBox last
+        allcard.appendChild(dateBox);
+      } else {
+        dateBox.classList.remove("active");
+      }
+    });
+  });
+});
+</script> -->
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const allcard = document.querySelector(".allcard");
+  const getCoveredBtn = document.querySelector(".firstbtn"); 
+
+  const steps = [
+    document.querySelector('[data-box="personal"]'),
+    document.querySelector('[data-box="vehicle"]'),
+    document.querySelector('[data-box="services"]'),
+    document.querySelector('[data-box="uplode"]'),
+    document.querySelector('[data-box="submit-box"]')
+  ];
+
+  const dateBox = document.querySelector('[data-box="date_services"]');
+  const uploadInput = document.querySelector('#fileInput'); // upload input
+
+  // 🔒 Lock all steps initially
+  steps.forEach(step => step.classList.add("locked"));
+
+  function unlockStep(step) {
+    step.classList.remove("locked");
+  }
+
+  function allFilled(step) {
+    const inputs = step.querySelectorAll("input[required], select[required]");
+    return Array.from(inputs).every(input => input.value.trim() !== "");
+  }
+
+  // ✅ Check if all service sub-boxes are filled
+  function allServiceFilled() {
+    const serviceCheckboxes = document.querySelectorAll(".Our_Services_box input[type='checkbox']");
+    const selectedServices = Array.from(serviceCheckboxes).filter(cb => cb.checked).map(cb => cb.id);
+    return selectedServices.every(serviceId => {
+      const subBoxes = document.querySelectorAll(`[data-box="${serviceId}_services"]`);
+      return Array.from(subBoxes).every(box => {
+        const inputs = box.querySelectorAll("input, select");
+        return Array.from(inputs).some(inp => inp.type === "radio" || inp.type === "checkbox" ? inp.checked : inp.value.trim() !== "");
+      });
+    });
+  }
+
+  // ✅ Unlock personal step on Get Covered
+  getCoveredBtn.addEventListener("click", function () {
+    allcard.style.overflowX = "auto"; 
+    unlockStep(steps[0]);
+    steps[0].scrollIntoView({ behavior: "smooth", inline: "start" });
+  });
+
+  // ✅ Unlock normal steps when inputs filled
+  steps.forEach((step, index) => {
+    if(index < 3){ // personal, vehicle, services
+      const inputs = step.querySelectorAll("input[required], select[required]");
+      inputs.forEach(input => {
+        input.addEventListener("input", function () {
+          if(allFilled(step)){
+            if(index + 1 < steps.length && steps[index + 1].classList.contains("locked")){
+              unlockStep(steps[index + 1]);
+              steps[index + 1].scrollIntoView({behavior:"smooth", inline:"start"});
+            }
+          }
+        });
+      });
+    }
+  });
+
+  // ✅ Service checkboxes → show sub-boxes
+  const serviceCheckboxes = document.querySelectorAll(".Our_Services_box input[type='checkbox']");
+  const subBoxes = document.querySelectorAll(".sub_box");
+  serviceCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", function(){
+      const serviceMap = {
+        ppf: "ppf_services",
+        ceramic: "ceramic_services",
+        graphene: "graphene_services",
+        windowfilm: "windowfilm_services"
+      };
+      const subBoxClass = serviceMap[this.id];
+      document.querySelectorAll(`[data-box="${subBoxClass}"]`).forEach(box => {
+        box.classList.toggle("active", this.checked);
+      });
+
+      // Show date box if any service selected (do not append, just make active)
+      const anySelected = Array.from(serviceCheckboxes).some(cb=>cb.checked);
+      if(anySelected){
+        dateBox.classList.add("active");
+      } else {
+        dateBox.classList.remove("active");
+      }
+    });
+  });
+
+  // ✅ Unlock Upload step only after all sub-boxes & date filled
+  const dateInputs = dateBox.querySelectorAll("input[required], select[required]");
+  dateInputs.forEach(dateInput => {
+    dateInput.addEventListener("input", function(){
+      const uplodeStep = document.querySelector('[data-box="uplode"]');
+      if(uplodeStep.classList.contains("locked") && dateInput.value.trim() !== "" && allServiceFilled()){
+        unlockStep(uplodeStep);
+        uplodeStep.scrollIntoView({behavior:"smooth", inline:"start"});
+      }
+    });
+  });
+
+  // ✅ Unlock Submit step only after file uploaded
+  if(uploadInput){
+    uploadInput.addEventListener("change", function(){
+      const submitStep = document.querySelector('[data-box="submit-box"]');
+      if(submitStep.classList.contains("locked")){
+        unlockStep(submitStep);
+        submitStep.scrollIntoView({behavior:"smooth", inline:"start"});
+      }
+    });
+  }
+
+});
+</script>
 
   </body>
 </html>
