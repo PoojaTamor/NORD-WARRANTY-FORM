@@ -140,15 +140,28 @@ color: #fff;
 
           }
 
+/* 
+.allcard {
+  display: flex;
+  overflow-x: auto;          
+  scroll-behavior: smooth;   
+  gap: 50px;                 
+  
+  -webkit-overflow-scrolling: touch;
+} */
+
+.locked {
+  pointer-events: none;   /* click / tap disabled */
+  opacity: 0.5;           /* thoda greyed-out look */
+}
 
 .allcard {
   display: flex;
-  overflow-x: auto;           /* horizontal scroll */
-  scroll-behavior: smooth;    /* smooth scrolling */
-  gap: 50px;                  /* spacing between boxes */
-  /* padding-bottom: 10px;   scroll-snap-type: x mandatory; /* snap boxes on scroll */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on mobile */
+  overflow-x: hidden;   /* by default scroll lock */
+  scroll-behavior: smooth;
+  gap: 50px;
 }
+
 .allcard::-webkit-scrollbar {
   display: none;              /* Chrome, Safari */
 }
@@ -166,6 +179,7 @@ color: #fff;
   padding: 40px;
   border-radius: 10px;
 }
+
 
 .first-slide-box {
   width: 96%;
@@ -214,6 +228,7 @@ background-color: #494949;
 
 }
 
+
 /* Details hidden initially */
 
 
@@ -243,25 +258,38 @@ font-size: 5rem;
   opacity: 1;
   /* border: 1px solid #000; */
 }
+   .All_sub_box{
+     display: flex;
+    gap: 50px; 
+    /* width: max-content; remove this */
+    width: 90%; /* or 100% of parent container */
+    justify-content: space-between;  
+    }
 
 .sub_box{
-    padding: 50px;
+  /* padding: 50px; */
   color: white;
-  /* overflow: hidden; */
   cursor: pointer;
   transition: all 0.5s ease;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: end; 
+  padding: 40px;
+  border-radius: 10px;
+ flex: 0 0 45%; 
+  background-color: #2E2E2E;         /* 40% width for other boxes */
+    box-sizing: border-box; /* include padding in width */
+
 }
 
 .sub_box h2{
-  font-size: 5rem;
-    line-height: 70px;
+  font-size: 4.5rem;
+    line-height: 60px;
   margin-bottom: 20px;
     padding-bottom: 0px;  
 }
+
 
 .subdetailbox{
     display: flex !important;
@@ -407,6 +435,21 @@ font-size: 5rem;
       position: relative;
     }
 
+
+   .custom-input {
+          background-color: transparent;
+    color: #fff;
+    font-size: 1.65rem;
+    width: 100%;
+    border: none;
+    font-weight: 600;
+    margin-top: 10px;
+    outline: none;
+    padding: 4px 10px;
+    border-radius: 50px;
+    /* border: 1px solid #faf4f4 !important; */
+    }
+
     /* Arrow hidden by default */
     .radio-label::after {
       content: "";
@@ -432,3 +475,243 @@ font-size: 5rem;
     .radio-row input[type="radio"]:checked + .radio-label::after {
       opacity: 1;
     }
+
+ 
+
+    .checkboxservice input{
+      display: none;
+    }
+
+    .radio-labels{
+      padding: 3px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      font-size: 1.5rem;
+
+    }
+
+    input[type="radio"]:checked + .radio-labels {
+      border: 2px solid #fff;
+    }
+
+    .btn-check:focus+.btn, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+  .checkboxservice .btn:hover {
+    color: #fff;
+}
+
+ .checkboxservice span{
+  display: inline-block;
+  /* border: 1px solid #ffff; */
+  /* color: #EB4A14; */
+  border-radius: 50px;
+  /* color: #1E1E1E; */
+  border: 2px solid #EB4A14;
+  /* background-color: #fff; */
+margin: 5px 4px;
+  font-weight: 400;
+  font-size: 0.8rem;
+
+ }
+
+
+.yearbox select {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 16px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  appearance: none; /* hides default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 70%;
+  cursor: pointer;
+
+  /* Custom arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg width="33" height="29" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5883 28.7168L0.535075 0.911763L32.6416 0.911766L16.5883 28.7168Z" fill="%23D9D9D9"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px; /* adjust size as needed */
+  padding-right: 40px; /* space for arrow */
+}
+
+.yearbox select:focus{
+  outline: none;
+}
+.yearbox option{
+  color: #1E1E1E;
+}
+/* .yearbox {
+  position: relative;
+  display: inline-block;
+}
+
+.yearbox::after {
+  content: "▼";
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #fff;
+} */
+.Uplode_box{
+  flex: 0 0 80%;  
+  /* border: 1px solid #ffffff;  */
+    padding: 40px;
+}
+
+.Uplode_box h2{
+    font-size: 5rem;
+    line-height: 60px;
+  margin-bottom: 20px;
+    padding-bottom: 0px; 
+    color: #fff;
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+.ubloade_pic {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  background-color: #2E2E2E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: 0.3s ease-in-out;
+}
+
+/* Upload button */
+.upload-btn {
+  border: 1px solid #ccc;
+  padding: 8px 50px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: transparent;
+  z-index: 2; /* overlay ke upar rahe */
+}
+
+.plus {
+  margin-top: 10px;
+    z-index: 2;
+}
+
+.overlaer {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0); /* default transparent */
+  z-index: 1;
+  transition: background 0.4s ease; /* smooth fade effect */
+}
+
+.overlaer.active {
+background: rgb(0 0 0 / 70%)
+}
+
+.final-box{
+    flex: 0 0 100%;  
+  /* border: 1px solid #ffffff;  */
+    padding: 40px;
+}
+.final-box h2{
+    font-size: 5.5rem;
+    line-height: 75px;
+  margin-bottom: 20px;
+    padding-bottom: 0px; 
+    color: #fff;
+    margin-left: 50px;
+    padding-bottom: 50px;
+}
+maid{
+  color: #626262;
+}
+.finaldetailsbox{
+    margin-left: 50px;
+
+}
+.finaldetailsbox input{
+  width: 50%;
+  font-size: 2rem;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #fff;
+
+}
+.agree-box{
+  margin-top: 30px;
+
+}
+.agree-box input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #EB4A14; /* orange border */
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.agree-box input[type="checkbox"]:checked {
+  background-color: #EB4A14; /* orange background */
+  border-color: #EB4A14;
+}
+.agree-box input[type="checkbox"]:checked::after {
+ content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 30px;
+  height: 30px;
+  background: url("data:image/svg+xml;utf8,<svg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M6.173 13.727L.46 7.5 1.88 6.04l4.293 4.647L14.12.56 15.54 2.02z'/></svg>") no-repeat center center;
+  background-size: contain;
+}
+.agree-box  label{
+  font-size: 1.5rem;
+  color: #fff;
+  display: block;
+  line-height: 1;
+  margin-top: 20px;
+}
+
+.finaldetailsbox .button-explore{
+width: 20%;
+background-color: transparent;
+border: 1px solid #ffffff;
+margin-top: 30px;
+}
+.finaldetailsbox .button-explore:hover{
+  background-color: #EB4A14;
+  border: 1px solid #EB4A14;
+}
+
+.sub_box {
+  display: none; /* default hidden */
+}
+.sub_box.active {
+  display: block; /* selected service show */
+}
+.input-row input::placeholder{
+  color: #fff;
+}
