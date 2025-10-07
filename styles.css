@@ -14,11 +14,51 @@ form{
 }
 .allscreee-box{
     height: 100vh;
+        display: flex;
+      flex-wrap: nowrap;            /* horizontal alignment only */
+      overflow-x: auto;             /* enable horizontal scroll */
+      scroll-behavior: smooth;      /* smooth scrolling */
+      -webkit-overflow-scrolling: touch;
+      /* scrollbar-width: none;  */
 }
 .allcard{
     height: 100vh;
 }
 
+.firstallinone,
+.mylastcolumn {
+  transition: transform 0.8s ease;
+}
+
+/* Slide form left */
+.firstallinone.hide {
+  transform: translateX(-100%);
+}
+
+/* Thankyou initially off-screen */
+.mylastcolumn {
+  display: none;
+  transform: translateX(100%);
+}
+
+/* Slide thankyou in */
+.mylastcolumn.show {
+  display: block;
+  transform: translateX(0);
+}
+
+  .allscreee-box::-webkit-scrollbar {
+      /* display: none;                 */
+    }
+.lastnordimg{
+  height: 230px;
+  width: 100%;
+  object-fit: cover;
+}
+.thankque{
+height: 100vh ;
+/* background-color: #fff; */
+}
 .logo-box{
     height: 100vh;
   box-sizing: border-box;
@@ -309,7 +349,7 @@ font-size: 5rem;
     height: 0;
   opacity: 0;
   padding-bottom: 30px;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: all 0.8s ease;
 }
 
@@ -443,10 +483,10 @@ font-size: 5rem;
     width: 100%;
     border: none;
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 3px;
     outline: none;
     padding: 4px 10px;
-    border-radius: 50px;
+    /* border-radius: 50px; */
     /* border: 1px solid #faf4f4 !important; */
     }
 
@@ -714,4 +754,248 @@ margin-top: 30px;
 }
 .input-row input::placeholder{
   color: #fff;
+}
+
+@media (max-width: 991.98px) {
+  .logo-box{
+    height: unset !important;
+  }
+  .logo-box img{
+    height: unset !important;
+         margin-top: 60px;
+  }
+  .first-slide-box {
+    width: 100%;
+}
+ .box.active h2 {
+    font-size: 6rem;
+    line-height: 90px;
+    margin-bottom: 50px;
+    padding-bottom: 0px;
+}
+.box.active .detailsbox {
+    height: 350px;
+}
+.input-row input {
+    font-size: 2rem;
+}
+.input-row label {
+    font-size: 2rem;
+}
+.sub_box {
+    flex: 0 0 77%;
+
+}
+
+.box h2 {
+      font-size: 7rem;
+    line-height: 96px;
+}
+.Personal_Details_box, .Vehicle_Details_box, .Our_Services_box {
+    flex: 0 0 77%;
+    padding: 40px;
+}
+
+.allcard{
+  height: unset;
+}
+.final-box h2 {
+    font-size: 4rem;
+    line-height: 65px;
+}
+.finaldetailsbox .button-explore {
+    width: 50%;
+    margin-top: 100px;
+}
+.finaldetailsbox input {
+    width: 70%;
+}
+.Uplode_box {
+    flex: 0 0 100%;
+  
+    padding: 40px;
+}
+.Uplode_box h2 {
+    font-size: 6rem;
+    line-height: 78px;
+}
+.ubloade_pic {
+    width: 100%;
+    height: 380px;
+}
+.upload-btn {
+    border: 1px solid #ccc;
+    padding: 15px 80px;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.agree-box {
+    margin-top: 40px;
+}
+.agree-box  label {
+    margin-top: 40px;
+} 
+}
+
+@media (max-width:500px) {
+.first-slide-box {
+    padding: 30px;
+}
+.first-slide-box h1 {
+    font-size: 3.5rem;
+    line-height: 50px;
+    padding-top: 10px;
+}
+.first-slide-box p {
+    font-size: 0.9rem;
+}
+.button-explore {
+    padding: 0.6rem 2rem;
+    font-size: 0.9rem;
+    width: 70%;
+}
+.first-slide-box {
+    width: 100%;
+    margin-right: 0px;
+}
+.first-bottom h5 {
+    font-size: 1rem;
+}
+.box.active h2 {
+    font-size: 2rem;
+    line-height: 90px;
+    margin-bottom: 50px;
+    padding-bottom: 0px;
+}
+.Personal_Details_box, .Vehicle_Details_box, .Our_Services_box {
+    flex: 0 0 100%;
+    padding: 30px;
+}
+.box h2 {
+    font-size: 4rem;
+    line-height: 60px;
+    padding-bottom: 0px;
+}
+.box.active h2 {
+    font-size: 3.5rem;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+.lastnordimg {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+}
+.box.active .detailsbox {
+    height: 200px;
+}
+.input-row .form-select {
+
+    font-size: 1rem;
+    padding: 0px;
+}
+    .input-row label {
+        font-size: 1rem;
+    }
+    .input-row input {
+    font-size: 1rem;
+}
+.sub_box h2 {
+    font-size: 3rem;
+    line-height: 44px;
+    margin-bottom: 20px;
+    padding-bottom: 0px;
+}
+.yearbox select {
+    background-color: transparent;
+    padding: 10px 16px;
+    font-size: 1rem;
+    width: 100%;
+}
+.radio-labels {
+    padding: 3px 22px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+}
+input[type="radio"]:checked + .radio-labels {
+    border: 1px solid #fff;
+}
+.sub_box {
+    flex: 0 0 100%;
+}
+.custom-input {
+    font-size: 1rem;
+    padding: 4px 10px;
+    /* border-radius: 50px; */
+    /* border: 1px solid #faf4f4 !important; */
+}
+.first-bottom{
+  margin-left: 20px;
+}
+.radio-label {
+    padding: 3px 22px;
+    font-size: 1.2rem;
+}
+
+.Uplode_box h2 {
+    font-size: 2.8rem;
+    line-height: 37px;
+    color: #fff;
+    margin-left: 0px;
+    padding-bottom: 50px;
+}
+.upload-btn {
+    border: 1px solid #ccc;
+    padding: 7px 30px;
+    font-size: 1rem;
+    margin-bottom: 0px;
+}
+    .Uplode_box {
+        padding: 20px;
+    }
+    .ubloade_pic {
+    width: 100%;
+    height: 250px;
+}
+.Uplode_box svg{
+width: 30px;
+}
+    .final-box h2 {
+        font-size: 1.8rem;
+        line-height: 30px;
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+    .finaldetailsbox {
+    margin-left: 0px;
+}
+.finaldetailsbox input {
+    width: 100%;
+}
+.agree-box input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+
+}
+.agree-box input[type="checkbox"]:checked::after {
+
+    width: 22px;
+    height: 22px;
+}
+.agree-box label {
+    font-size:0.8rem;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    margin-top: 20px;
+}
+    .finaldetailsbox .button-explore {
+        width: 80%;
+        margin-top: 60px;
+    }
+    .logo-box img {
+    margin-top: 30px;
+}
+
 }
