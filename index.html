@@ -8,7 +8,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
     <title>NORD WARRANTY FORM</title>
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -17,17 +16,15 @@
 
 <form action="">
     <div class="row gx-0 allscreee-box">
-    <div class="col-12">
+      <div class="col-12 firstallinone">
 <div class="row gx-0 align-items-center">
-  <div class="col-2">
+  <div class="col-lg-2">
   <div class=" logo-box  ">
-    <img src="./image.png" alt="Logo" class="img-fluid">
+    <img src="./nord-logo.svg" alt="Logo" class="img-fluid d-lg-block d-none">
+    <img src="./lastlogo.png" alt="Logo" class="img-fluid  d-lg-none d-block">
   </div>
 </div>
-    
-
-
-    <div class="col-10">
+    <div class="col-lg-10">
   <div class="p-3 allcard">
     
         <div class="first-outer-box  " data-box="first">
@@ -63,17 +60,17 @@
 <div class="detailsbox">
   <div class="input-row">
     <label>Full Name:</label>
-    <input type="text" placeholder="John Doe " required >
+    <input type="text" placeholder="John Doe "name="fullname"  required  >
   </div>
 
   <div class="input-row">
     <label>Phone Number:</label>
-    <input type="text" placeholder="+1 234 567 8901"  required >
+    <input type="text" placeholder="+1 234 567 8901" name="phone"  required >
   </div>
 
   <div class="input-row">
     <label>Email:</label>
-    <input type="email" placeholder="john.doe@example.com" required>
+    <input type="email" placeholder="john.doe@example.com" name="email" required>
   </div>
 </div>
 
@@ -81,7 +78,7 @@
 </div>
 
 
-    <div class="Vehicle_Details_box box" data-box="vehicle">
+     <div class="Vehicle_Details_box box" data-box="vehicle">
 
     <div class="full-detais-box">
       <div class="heading">
@@ -119,7 +116,6 @@
   <option value="Volkswagen">Volkswagen</option>
   <option value="Volvo">Volvo</option>
 </select>
-    <!-- <input type="text" value="John Doe "> -->
   </div>
 
   <div class="input-row">
@@ -129,22 +125,30 @@
                       <option value="A3 Cabriolet" selected>A3 Cabriolet</option>
                     </select>
   </div>
-    <!-- <div class="input-row">
-    <label>M yvehicle Model :</label>
-    <input type="text" value="ABC1234">
-  </div> -->
+    <div class="input-row"  >
+<div style="display: none"   id="otherModelContainer">
+      <div class="d-flex">
+        <label>Other Model:</label>
+                    <input
+                      type="text"
+                      id="OtherModel"
+                      name="otherModel"
+                      placeholder="Enter model"/>
+      </div>
+</div>
+  </div>
   <div class="input-row">
     <label>Registration Number :</label>
-    <input type="text" placeholder="ABC1234" required>
+    <input type="text" placeholder="ABC1234" required name="ref_no">
   </div>
 
   <div class="input-row">
     <label>Year of Manufacture:</label>
-    <input type="text" placeholder="2020" required>
+    <input type="text" placeholder="2020" required name="year">
   </div>
      <div class="input-row">
     <label> Color :</label>
-    <input type="text" placeholder="Blue"  required>
+    <input type="text" placeholder="Blue"  required name="Color">
   </div>
 
 </div>
@@ -162,28 +166,28 @@
 <div class="row gx-0 gy-4">
 <div class="col-4">
   <div class="input-row">
-    <input type="checkbox" id="ppf">
+    <input type="checkbox" id="ppf" name="ppf">
     <label class="checkbox-label" for="ppf">PPF</label>
   </div>
 </div>
 <div class="col-7">
 
   <div class="input-row">
-    <input type="checkbox" id="windowfilm">
+    <input type="checkbox" id="windowfilm" name="windowfilm">
     <label class="checkbox-label" for="windowfilm">WINDOW FILM</label>
   </div>
 </div>
 <div class="col-6">
 
   <div class="input-row">
-    <input type="checkbox" id="graphene">
+    <input type="checkbox" id="graphene" name="graphene">
     <label class="checkbox-label" for="graphene">GRAPHENE</label>
   </div>
 </div>
 <div class="col-6">
 
   <div class="input-row">
-    <input type="checkbox" id="ceramic">
+    <input type="checkbox" id="ceramic" name="ceramic">
     <label class="checkbox-label" for="ceramic">CERAMIC</label>
   </div>
 </div>
@@ -199,7 +203,6 @@
 </div>
 </div>
     </div>
-<!-- <div class="All_sub_box"> -->
       <div class="sub_box" data-box="ppf_services">
         <div class="full-detais-box">
       <div class="heading">
@@ -211,11 +214,11 @@
  <div class="row  gx-0 ">
 
     <div class="col-6  radio-row">
-   <input type="radio" id="matte" name="finish">
+   <input type="radio" id="matte" name="finish" value="matte">
     <label class="radio-label" for="matte">MATTE</label>
     </div>
     <div class="col-6 radio-row">
-            <input type="radio" id="gloss" name="finish">
+            <input type="radio" id="gloss" name="finish" value="gloss">
     <label class="radio-label" for="gloss">GLOSS</label>
     </div>
  
@@ -276,7 +279,7 @@
     </div>
     
 
-<div class="sub_box" data-box="ceramic_services">
+ <div class="sub_box" data-box="ceramic_services">
         <div class="full-detais-box">
       <div class="heading">
 
@@ -286,10 +289,10 @@
 <div class="subdetailbox yearbox">
   <select>
     <option disabled selected>Select years</option>
-    <option value="1">1 Year</option>
-    <option value="3">3 Years</option>
-    <option value="5">5 Years</option>
-    <option value="7">7 Years</option>
+    <option value="1year">1 Year</option>
+    <option value="3years">3 Years</option>
+    <option value="5years">5 Years</option>
+    <option value="7years">7 Years</option>
   </select>
 </div>
 </div>
@@ -351,7 +354,7 @@
 <div class="subdetailbox yearbox">
   <select>
     <option disabled selected>Select years</option>
-    <option value="5 Years">5 Years</option>
+    <option value="5Years">5 Years</option>
     <option value="10Years">10 Years</option>
   </select>
 </div>
@@ -414,7 +417,7 @@
 <div class="subdetailbox yearbox">
   <select>
     <option disabled selected>Select years</option>
-    <option value="5 Years">5 Years</option>
+    <option value="5Years">5 Years</option>
     <option value="10Years">10 Years</option>
   </select>
 </div>
@@ -481,8 +484,8 @@
   <div class="row gx-0 gy-4">
 
     <div class="col-6 input-row">
-     <select id="Store" class="form-select" >
-  <option value="" disabled selected>Select Store</option>
+     <select id="Store" class="form-select"  name="store">
+  <option  disabled selected>Select Store</option>
 </select>
     </div>
 
@@ -491,7 +494,10 @@
        <input type="text" id="serviceDate" class=" custom-input dateinput" placeholder="Select Date" name="dateInput" autocomplete="off" required>
 </div>
 
-<div  class="col-12 selected-tags ">
+<div class="col-8">
+        <div id="otherStoreContainer" style="display:none;">
+  <input type="text" id="OtherStore" class="custom-input"  placeholder=" Enter your store"  />
+</div>
 </div>
 </div>
 
@@ -500,7 +506,6 @@
 </div>
 </div>
     </div>
-<!-- </div> -->
     <div class="Uplode_box " data-box="uplode">
         <div class="full-detais-box">
       <div class="heading">
@@ -509,7 +514,7 @@
 
   </div>
 <div class="ubloade_pic">
-  <input type="file" id="fileInput" accept="image/*" hidden>
+  <input type="file" id="fileInput" accept="image/*" hidden name="file">
   <label for="fileInput" class="upload-btn">Upload picture</label>
   <div class="plus">
     <svg width="50" height="50" viewBox="0 0 108 109" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -535,10 +540,10 @@
 </div>
 <div class="agree-box">
   <input type="checkbox" id="aggree" name="agree">
-  <label for="aggree">I have read and agree to the Terms & Conditions of this <span class="d-block"> warranty.</span></label>
+  <label for="aggree">I have read and agree to the Terms & Conditions of this <span class="d-md-block"> warranty.</span></label>
 </div>
 
-                      <div class="button-explore"  >
+                      <div class="button-explore  "  id="submitaabtn">
     <div class="button-inner" id="submit-btn">
       <div class="button-inner-text"> submit 
 </div>
@@ -549,15 +554,22 @@
 </div>
 
 </div>
-    </div>
+    </div> 
   </div>
 </div>
 
   </div>
+    </div> 
+      <div class="col-12  mylastcolumn">
+      <div class=" border thankque  ">
+        <div class="container text-center">
+         <img src="./lastlogo.png" alt="" class="img-fluid mt-5 w-75 ">
+         <img src="./image.png" alt="" class="img-fluid w-50 my-4">
+         
+      </div>
+      <img src="./card-nord.png" alt="" class="img-fluid lastnordimg">
     </div>
-    <!-- <div class="col-12">
-      <div class="p-3 border bg-light"> thankyou</div>
-    </div> -->
+    </div>  
   </div>
 </form>
 
@@ -588,6 +600,63 @@
   disableMobile: true
 });
 </script>
+
+
+
+
+<script>
+  const storeList = [
+  "Agra",
+  "Ahmedabad",
+  "Aligarh",
+  "Ambience Mall",
+  "Bengaluru",
+  "Dimapur",
+  "Indore",
+  "Jaipur",
+  "Janakpuri",
+  "Lucknow",
+  "Mohali",
+  "Nagpur",
+  "Noida",
+  "Pacific Mall ,Subhash Nagar",
+  "Promenade Mall",
+  "Rudrapur",
+  "Surat",
+  "Udaipur",
+  "Vadodara"
+];
+
+// Sort alphabetically
+storeList.sort();
+
+const storeSelect = document.getElementById("Store");
+const otherStoreContainer = document.getElementById("otherStoreContainer");
+
+// Populate store dropdown
+storeList.forEach(store => {
+  const option = document.createElement("option");
+  option.value = store;
+  option.textContent = store;
+  storeSelect.appendChild(option);
+});
+
+// Add "Other" option
+const otherOption = document.createElement("option");
+otherOption.value = "Other";
+otherOption.textContent = "Other";
+storeSelect.appendChild(otherOption);
+
+// Show input if "Other" selected
+storeSelect.addEventListener("change", function() {
+  if (this.value === "Other") {
+    otherStoreContainer.style.display = "block";
+  } else {
+    otherStoreContainer.style.display = "none";
+  }
+});
+</script>
+
 
 <script>
   function initProtectionRadios(serviceBox) {
@@ -809,6 +878,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+
+
+
+// const submitBtn = document.querySelector("#submitaabtn");
+// const firstColumn = document.querySelector(".firstallinone");
+// const lastColumn = document.querySelector(".mylastcolumn");
+
+// if (submitBtn) {
+//   submitBtn.addEventListener("click", function (e) {
+//     e.preventDefault();
+
+//     // Slide first column out
+//     firstColumn.classList.add("hide");
+
+//     // Wait for the slide-out animation before hiding and showing next
+//     setTimeout(() => {
+//       firstColumn.style.display = "none";   // hide form after slide out
+//       lastColumn.style.display = "block";   // show thankyou
+//       // small delay to let browser register new display
+//       setTimeout(() => {
+//         lastColumn.classList.add("show");   // slide in from right
+//       }, 200);
+//     }, 800); // same as CSS transition time
+//   });
+// }
+
+ const form = document.querySelector("form");
+  const submitBtn = document.querySelector("#submitaabtn");
+
+  submitBtn.addEventListener("click", async function (e) {
+    e.preventDefault();
+
+    // ✅ Basic Validation
+    const requiredFields = form.querySelectorAll("input[required], select[required]");
+    for (let field of requiredFields) {
+      if (!field.value.trim()) {
+        alert(`Please fill out the ${field.name || field.placeholder} field.`);
+        field.focus();
+        return;
+      }
+    }
+
+    const agree = document.querySelector("#aggree");
+    if (!agree.checked) {
+      alert("Please agree to the Terms & Conditions before submitting.");
+      return;
+    }
+
+    // ✅ Prepare Data
+    const formData = {
+      fullname: form.fullname.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      brand: form.brand.value,
+      model: form.model.value,
+      ref_no: form.ref_no.value,
+      year: form.year.value,
+      Color: form.Color.value,
+      services: Array.from(document.querySelectorAll(".Our_Services_box input[type='checkbox']:checked")).map(cb => cb.id).join(", "),
+      store: form.store.value,
+      dateInput: form.dateInput.value,
+      amount: document.querySelector('[data-box="submit-box"] input[type="text"]').value,
+      fileURL: ""
+    };
+
+    // ✅ Handle File Upload (optional)
+    const fileInput = document.querySelector("#fileInput");
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      formData.fileURL = file.name; // just name (Google Apps Script won’t receive file directly)
+    }
+
+    // ✅ Send to Google Sheets
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzCtypGxIpJKuadkDJljBsc1qWMpvtAjuBbWmie3VxrM6sqpxIwALElZ9e59NSbod2m/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      // ✅ Animation after success
+      const firstColumn = document.querySelector(".firstallinone");
+      const lastColumn = document.querySelector(".mylastcolumn");
+      firstColumn.classList.add("hide");
+      setTimeout(() => {
+        firstColumn.style.display = "none";
+        lastColumn.style.display = "block";
+        setTimeout(() => lastColumn.classList.add("show"), 200);
+      }, 800);
+    } catch (error) {
+      alert("Error submitting form. Please try again.");
+      console.error(error);
+    }
+  });
   const allcard = document.querySelector(".allcard");
   const getCoveredBtn = document.querySelector(".firstbtn"); 
 
@@ -924,5 +1088,99 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
+
+<script>
+    const modelData = {
+  Audi: ["A3", "A3 Cabriolet", "A4", "A6", "A6 Matrix", "Q2", "Q3", "Q5", "Q7", "R8", "RS5", "RS6", "RS7 Sportback", "S5 Sportback", "TT"],
+  BMW: ["2 Series Gran Coupe", "3 Series", "3 Series GT", "4 Series", "5 Series", "5 Series GT", "6 Series", "7 Series", "8 Series", "i8", "M3", "M5", "X1", "X3", "X4", "X5", "X6", "Z4"],
+  BYD: ["Atto 3", "Seal", "E6", "Dolphin", "Tang", "Song Plus"],
+  Chevrolet: ["Aveo", "Aveo Old", "Aveo U-VA", "Beat", "Captiva", "Cruze", "Enjoy", "Forester", "Optra", "Optra Magnum", "Optra SRV", "Sail", "Sail Hatchback", "Sail U-VA", "Spark", "Tavera", "Trailblazer"],
+  Citroen: ["Basalt", "C3", "C3 AIRCROSS", "C5 Aircross"],
+  Datsun: ["GO", "Go Puls"],
+  Ford: ["Classic", "Escort", "Fiesta", "Fiesta Classic", "Freestyle", "Fusion", "Ikon", "Mondeo", "Mustang"],
+  Hyundai: ["Accent", "Accent Viva", "Alcazar", "Aura", "Creta", "Creta N-Line", "Elantra", "Eon", "Exter", "Getz", "Getz Prime", "Grand i10", "Grand i10 Nios", "i10", "i20", "Neo Fluidic Elantra", "New Santro 1.1", "Santa Fe", "Santro", "Santro Xing", "Sonata", "Sonata Embera", "Terracan", "Tucson", "Venue", "Venue N-Line", "Xcent"],
+  Isuzu: ["MU-X", "D-MAX V-Cross", "Hi-Lander", "S-Cab", "S-Cab Z"],
+  Jaguar: ["F-Pace", "E-Pace", "I-Pace", "XE", "XF", "XJ"],
+  Kia: ["Carens", "Carnival", "Seltos", "Sonet"],
+  "Land Rover": ["Discovery", "Discovery 3", "Discovery 4", "Discovery Sport", "Range Rover Evoque"],
+  Lexus: ["NX", "RX", "LX", "ES", "LS", "LC 500h", "LM"],
+  Mahindra: ["Alturas G4", "Armada", "Bolero", "Bolero Neo", "e20", "KUV100", "KUV100 NXT", "Marazzo", "Marshal", "NuvoSport", "Quanto", "REVAI", "Scorpio", "Scorpio Classic", "Scorpio Getaway", "Scorpio N", "Thar", "Thar Roxx", "TUV 300 PLUS", "TUV300", "Verito", "XUV 300", "XUV 300 TurboSport", "XUV 3XO", "XUV500", "XUV700", "Xylo"],
+  "Maruti Suzuki": ["1000", "800", "A-Star", "Alto", "Alto 800", "Baleno", "Brezza", "Celerio", "Celerio X", "Ciaz", "Dzire", "Eeco", "Esteem", "Estilo", "Fronx", "Grand Vitara", "Gypsy", "Ignis", "Invicto", "Jimny", "New Ertiga", "Omni", "Ritz", "S-Cross", "S-Presso", "Swift", "SX4", "Versa", "Wagon R", "XL6", "Zen", "Zen Estilo"],
+  "MG Motors": ["Astor", "Gloster", "Hector", "Hector Plus", "ZS EV"],
+  "Mercedes-Benz": ["A-Class", "AMG GT", "B-Class", "C-Class", "CLA", "E-Class", "E-Class Cabriolet", "GL", "GLA", "GLB", "GLC", "GLE", "GLE Coupe", "GLS", "ML-Class", "S-Coupe", "SL"],
+  "Mini Cooper": ["Cooper", "Countryman", "Cooper SE", "Countryman Electric"],
+  Nissan: ["350Z", "370Z", "Evalia", "Kicks", "Magnite", "Micra", "Micra Active", "Sunny", "Teana", "Terrano", "X-Trail"],
+  Porsche: ["Macan", "Cayenne", "911", "Panamera", "Taycan", "718", "Cayenne Coupe"],
+  Renault: ["Captur", "Duster", "Fluence", "Kiger", "Koleos", "Kwid", "Lodgy", "Logan", "Pulse", "Scala", "Triber"],
+  Skoda: ["Fabia", "Fabia Scout", "Karoq", "Kodiaq", "Kushaq", "Laura", "Octavia", "Octavia Combi", "Rapid", "Slavia", "Superb", "Superb Old", "Yeti"],
+  Tata: ["Altroz", "Aria", "Bolt", "Curvy", "Harrier", "Hexa", "Indica", "Indica V2", "Indica V2 Turbo", "Indica V2 Xeta", "Indica Vista", "Indica eV2", "Indicab", "Indigo", "Indigo CS", "Indigo XL", "Indigo eCS", "Indigo Marina", "Manza", "Movus", "Nano", "Nano GenX", "Nexon", "Nexon EV", "Nexon EV Max", "Nexon EV Prime", "Punch", "Safari", "Safari Storme", "Sierra", "Sumo", "Sumo Gold", "Sumo Grande", "Sumo Grande MK II", "Sumo Spacio", "Sumo Victa", "Tiago", "Tiago EV", "Tiago NRG", "Tigor", "Tigor EV", "Venture", "Vista Tech", "Xenon XT", "Zest"],
+  Toyota: ["Alphard", "Camry", "Celica", "Corolla", "Corolla Altis", "Corona", "Etios", "Etios Cross", "Etios Liva", "Fortuner", "Glanza", "Hilux", "Innova", "Innova Crysta", "Innova Hycross", "Land Cruiser", "Land Cruiser Prado", "Prius", "Qualis", "Rumion", "Urban Cruiser", "Urban Cruiser Hyryder", "Urban Cruiser Taisor", "Yaris"],
+  Volkswagen: ["1600", "Ameo", "Beetle", "Cross Polo", "Jetta", "Passat", "Phaeton", "Polo", "T-Roc", "Taigun", "Tiguan", "Tiguan AllSpace", "Touareg", "Virtus", "Vento"],
+  Volvo: ["XC90", "XC60", "XC40 Recharge", "C40 Recharge", "EX40", "EC40", "EX30", "S90"]
+};
+
+const brandSelect = document.getElementById("Brand");
+      const modelSelect = document.getElementById("Model");
+      const otherModelInput = document.getElementById("OtherModel");
+
+
+      console.log(document.getElementById("Brand"));
+console.log(document.getElementById("Model"));
+      brandSelect.addEventListener("change", function () {
+        const selectedBrand = brandSelect.value;
+        modelSelect.innerHTML =
+          '<option value="" selected disabled>Select Model</option>';
+
+        if (modelData[selectedBrand]) {
+          modelData[selectedBrand].forEach((model) => {
+            const option = document.createElement("option");
+            option.value = model;
+            option.textContent = model;
+            modelSelect.appendChild(option);
+          });
+
+          // Add "Other" option
+          const otherOption = document.createElement("option");
+          otherOption.value = "Other";
+          otherOption.textContent = "Other";
+          modelSelect.appendChild(otherOption);
+
+          modelSelect.disabled = false;
+        } else {
+          modelSelect.disabled = true;
+        }
+
+        // Hide Other input when brand changes
+        otherModelContainer.style.display = "none";
+        otherModelInput.value = "";
+      });
+
+      // Model change
+      modelSelect.addEventListener("change", function () {
+        if (modelSelect.value === "Other") {
+          otherModelContainer.style.display = "block";
+          otherModelInput.focus();
+             otherModelInput.required = true;
+        } else {
+          otherModelContainer.style.display = "none";
+          otherModelInput.value = "";
+           otherModelInput.required = false;
+        }
+      });
+// Model change
+modelSelect.addEventListener("change", function () {
+  if (modelSelect.value === "Other") {
+    otherModelContainer.style.display = "block";
+    otherModelInput.required = true;
+    otherModelInput.focus();
+  } else {
+    otherModelContainer.style.display = "none";
+    otherModelInput.value = "";
+    otherModelInput.required = false;
+  }
+});
+
+</script>
   </body>
 </html>
