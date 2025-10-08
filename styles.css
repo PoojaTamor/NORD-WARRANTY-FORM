@@ -21,10 +21,21 @@ form{
       -webkit-overflow-scrolling: touch;
       /* scrollbar-width: none;  */
 }
-.allcard{
+/* .allcard{
     height: 100vh;
+} */
+.allcard {
+  scroll-behavior: smooth;
+  display: flex;
+  height: 100vh;
+  overflow-x: hidden;
+  transition: scroll-left 0.6s ease;
 }
 
+[data-box] {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
 .firstallinone,
 .mylastcolumn {
   transition: transform 0.8s ease;
@@ -253,6 +264,7 @@ background-color: #494949;
   display: flex;
   justify-content: center;
   align-items: end;
+
 }
 
 /* Heading big by default */
@@ -657,7 +669,7 @@ margin: 5px 4px;
   inset: 0;
   background: rgba(0, 0, 0, 0); /* default transparent */
   z-index: 1;
-  transition: background 0.4s ease; /* smooth fade effect */
+  transition: background 0.4s ease; 
 }
 
 .overlaer.active {
@@ -666,7 +678,6 @@ background: rgb(0 0 0 / 70%)
 
 .final-box{
     flex: 0 0 100%;  
-  /* border: 1px solid #ffffff;  */
     padding: 40px;
 }
 .final-box h2{
@@ -681,10 +692,12 @@ background: rgb(0 0 0 / 70%)
 maid{
   color: #626262;
 }
+
+
 .finaldetailsbox{
     margin-left: 50px;
-
 }
+
 .finaldetailsbox input{
   width: 50%;
   font-size: 2rem;
@@ -693,7 +706,6 @@ maid{
   outline: none;
   border: none;
   border-bottom: 2px solid #fff;
-
 }
 .agree-box{
   margin-top: 30px;
@@ -705,7 +717,7 @@ maid{
   -moz-appearance: none;
   width: 40px;
   height: 40px;
-  border: 2px solid #EB4A14; /* orange border */
+  border: 2px solid #EB4A14;
   border-radius: 4px;
   background: transparent;
   cursor: pointer;
@@ -714,7 +726,7 @@ maid{
   margin-right: 8px;
 }
 .agree-box input[type="checkbox"]:checked {
-  background-color: #EB4A14; /* orange background */
+  background-color: #EB4A14; 
   border-color: #EB4A14;
 }
 .agree-box input[type="checkbox"]:checked::after {
@@ -755,6 +767,7 @@ margin-top: 30px;
 .input-row input::placeholder{
   color: #fff;
 }
+
 
 @media (max-width: 991.98px) {
   .logo-box{
@@ -837,10 +850,13 @@ margin-top: 30px;
 } 
 }
 
+
+
 @media (max-width:500px) {
 .first-slide-box {
     padding: 30px;
 }
+ 
 .first-slide-box h1 {
     font-size: 3.5rem;
     line-height: 50px;
