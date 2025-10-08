@@ -49,6 +49,7 @@
 <div class="first-bottom">
 
     <h5><span>Eligibility</span>  <br>*Applicable only for vehicles serviced at authorized centers.</h5>
+    
 </div>
         </div>
 
@@ -79,7 +80,6 @@
 
 
      <div class="Vehicle_Details_box box" data-box="vehicle">
-
     <div class="full-detais-box">
       <div class="heading">
 
@@ -155,7 +155,7 @@
 </div>
     </div>
 
-    <div class="Our_Services_box box" data-box="services">
+    <div class="Our_Services_box box" data-box="services" >
         <div class="full-detais-box">
       <div class="heading">
 
@@ -191,11 +191,7 @@
     <label class="checkbox-label" for="ceramic">CERAMIC</label>
   </div>
 </div>
-
-
-
 </div>
-
 
 
 
@@ -203,7 +199,7 @@
 </div>
 </div>
     </div>
-      <div class="sub_box" data-box="ppf_services">
+      <div class="sub_box" data-box="ppf_services" >
         <div class="full-detais-box">
       <div class="heading">
 
@@ -238,7 +234,6 @@
 
   </div>
 <div class="subdetailbox checkboxservice">
-
   <div class="row gx-0 gy-4">
 
     <div class="col-6">
@@ -580,6 +575,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <script>
     document.querySelectorAll(".box").forEach(box => {
@@ -772,7 +769,7 @@ document.querySelectorAll('.checkboxservice').forEach(initProtectionRadios);
 </script>
 
 
-<!-- <script>
+ <!-- <script>
 document.addEventListener("DOMContentLoaded", function () {
   const allcard = document.querySelector(".allcard");
   const getCoveredBtn = document.querySelector(".firstbtn"); 
@@ -802,8 +799,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // 🔹 Get Covered click → sirf personal unlock
   getCoveredBtn.addEventListener("click", function () {
     allcard.style.overflowX = "auto"; 
+      // const isMobile = window.innerWidth <= 768;
     unlockStep(steps[0]); 
-    steps[0].scrollIntoView({ behavior: "smooth", inline: "start" });
+    steps[0].scrollIntoView({ behavior: "smooth", inline: "start"});
   });
 
   // 🔹 Har step ke liye check karo → sab filled hone par hi agla unlock ho
@@ -816,7 +814,7 @@ document.addEventListener("DOMContentLoaded", function () {
             unlockStep(steps[index + 1]); 
             steps[index + 1].scrollIntoView({
               behavior: "smooth",
-              inline: "start"
+              inline : "start"
             });
           }
         }
@@ -872,11 +870,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-</script> -->
+</script>  -->
 
 
 
-<script>
+ <!-- <script>
 document.addEventListener("DOMContentLoaded", function () {
 
 
@@ -1015,8 +1013,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // ✅ Unlock personal step on Get Covered
   getCoveredBtn.addEventListener("click", function () {
     allcard.style.overflowX = "auto"; 
+    const isMobile = window.innerWidth <= 768;
     unlockStep(steps[0]);
-    steps[0].scrollIntoView({ behavior: "smooth", inline: "start" });
+    steps[0].scrollIntoView({ behavior: "smooth", inline: isMobile ? "center" : "start"});
   });
 
   // ✅ Unlock normal steps when inputs filled
@@ -1028,7 +1027,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if(allFilled(step)){
             if(index + 1 < steps.length && steps[index + 1].classList.contains("locked")){
               unlockStep(steps[index + 1]);
-              steps[index + 1].scrollIntoView({behavior:"smooth", inline:"start"});
+              steps[index + 1].scrollIntoView({behavior:"smooth", inline: isMobile ? "center" : "start"});
             }
           }
         });
@@ -1084,6 +1083,296 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+});
+</script>   -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  const submitBtn = document.querySelector("#submitaabtn");
+  const allcard = document.querySelector(".allcard");
+  const getCoveredBtn = document.querySelector(".firstbtn");
+  const steps = [
+    document.querySelector('[data-box="personal"]'),
+    document.querySelector('[data-box="vehicle"]'),
+    document.querySelector('[data-box="services"]'),
+    document.querySelector('[data-box="uplode"]'),
+    document.querySelector('[data-box="submit-box"]')
+  ];
+  const dateBox = document.querySelector('[data-box="date_services"]');
+  const uploadInput = document.querySelector('#fileInput');
+  const isMobile = window.innerWidth <= 768;
+
+  // 🔒 Lock all steps initially
+  steps.forEach(step => step.classList.add("locked"));
+
+  function unlockStep(step) { step.classList.remove("locked"); }
+  function allFilled(step) {
+    const inputs = step.querySelectorAll("input[required], select[required]");
+    return Array.from(inputs).every(input => input.value.trim() !== "");
+  }
+
+  // ✅ Service Sub-Boxes Handling
+  function initProtectionRadios(serviceBox) {
+    const dropdown = serviceBox.querySelector('.parts-list');
+    const tagsContainer = serviceBox.querySelector('.selected-tags');
+    let selectedParts = [];
+
+    function renderTags() {
+      tagsContainer.innerHTML = '';
+      selectedParts.forEach(val => {
+        const tag = document.createElement('span');
+        tag.classList.add('badge');
+        tag.textContent = val;
+        tagsContainer.appendChild(tag);
+      });
+    }
+
+    function toggleSelection(element, value) {
+      if (!selectedParts.includes(value)) {
+        selectedParts.push(value);
+        element.innerHTML = value + ' <b class="checkmark">&#10003;</b>';
+      } else {
+        selectedParts = selectedParts.filter(v => v !== value);
+        element.innerHTML = value;
+      }
+      renderTags();
+    }
+
+    dropdown.addEventListener('click', function(e) {
+      const item = e.target.closest('.dropdown-item');
+      if (!item) return;
+      e.preventDefault();
+      if (item.classList.contains('other-option')) {
+        if (!serviceBox.querySelector('.other-input')) {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.placeholder = 'Enter custom part';
+          input.classList.add('other-input','form-control','mt-2');
+          dropdown.insertAdjacentElement('afterend', input);
+          input.focus();
+          input.addEventListener('blur', function() {
+            const val = input.value.trim();
+            if (val) {
+              const newItem = document.createElement('li');
+              const newLink = document.createElement('a');
+              newLink.classList.add('dropdown-item');
+              newLink.href = '#';
+              newLink.setAttribute('data-value', val);
+              newLink.textContent = val;
+              newItem.appendChild(newLink);
+              dropdown.insertBefore(newItem, dropdown.lastElementChild);
+              toggleSelection(newLink, val);
+            }
+            input.remove();
+          });
+        }
+      } else {
+        toggleSelection(item, item.getAttribute('data-value'));
+      }
+    });
+  }
+
+  document.querySelectorAll('.checkboxservice').forEach(initProtectionRadios);
+
+  // ✅ Collect Service Data for Sheets
+function getServiceData() {
+  const selectedServices = Array.from(document.querySelectorAll(".Our_Services_box input[type='checkbox']:checked")).map(cb => cb.id);
+  let warrantyType = '';
+  let coverageArea = [];
+
+  selectedServices.forEach(serviceId => {
+    // ✅ Warranty/Type
+    if(serviceId === 'ppf') warrantyType += (document.querySelector('input[name="finish"]:checked')?.value || '');
+    if(serviceId === 'ceramic') warrantyType += (warrantyType?', ':'') + (document.querySelector('[data-box="ceramic_services"] select')?.value || '');
+    if(serviceId === 'graphene') warrantyType += (warrantyType?', ':'') + (document.querySelector('[data-box="graphene_services"] select')?.value || '');
+    if(serviceId === 'windowfilm') warrantyType += (warrantyType?', ':'') + (document.querySelector('[data-box="windowfilm_services"] select')?.value || '');
+
+    // ✅ Coverage/Area
+    const serviceBox = document.querySelector(`[data-box="${serviceId}_services"]`);
+    if(!serviceBox) return;
+
+    // get checked radio
+    const checkedRadio = serviceBox.querySelector(`input[name="${serviceId}_coverage"]:checked`);
+    if(checkedRadio){
+      if(checkedRadio.value === "Full Coverage") {
+        coverageArea.push(`${serviceId}: Full Coverage`);
+      } else {
+        const tagsContainer = serviceBox.querySelector('.selected-tags');
+        const tags = tagsContainer ? Array.from(tagsContainer.querySelectorAll('span')).map(s => s.textContent) : [];
+        if(tags.length > 0){
+          coverageArea.push(`${serviceId}: ${tags.join(", ")}`);
+        }
+      }
+    }
+  });
+
+  return { selectedServices, warrantyType, coverageArea: coverageArea.join(" | ") };
+}
+
+  // ✅ Unlock personal step on Get Covered
+  getCoveredBtn.addEventListener("click", function () {
+    allcard.style.overflowX = "auto";
+    unlockStep(steps[0]);
+    steps[0].scrollIntoView({behavior:"smooth", inline:isMobile?"center":"start"});
+  });
+
+  // ✅ Auto Unlock Next Step
+  steps.forEach((step,index)=>{
+    if(index<3){
+      const inputs = step.querySelectorAll("input[required], select[required]");
+      const lastInput = inputs[inputs.length-1];
+      if(lastInput){
+        lastInput.addEventListener('blur', function(){
+          if(allFilled(step)){
+            if(index+1 < steps.length && steps[index+1].classList.contains("locked")){
+              unlockStep(steps[index+1]);
+              steps[index+1].scrollIntoView({behavior:"smooth", inline:isMobile?"center":"start"});
+            }
+          }
+        });
+      }
+    }
+  });
+
+  // ✅ Show/hide service sub-boxes
+  document.querySelectorAll(".Our_Services_box input[type='checkbox']").forEach(cb=>{
+    cb.addEventListener('change', function(){
+      const map = {ppf:"ppf_services", ceramic:"ceramic_services", graphene:"graphene_services", windowfilm:"windowfilm_services"};
+      document.querySelectorAll(`[data-box="${map[this.id]}"]`).forEach(box=>{
+        box.classList.toggle("active", this.checked);
+      });
+      dateBox.classList.toggle("active", Array.from(document.querySelectorAll(".Our_Services_box input[type='checkbox']")).some(c=>c.checked));
+    });
+  });
+
+  // ✅ Unlock Upload step after date filled + service selected
+  const dateInputs = dateBox.querySelectorAll("input[required], select[required]");
+  const lastDateInput = dateInputs[dateInputs.length-1];
+  if(lastDateInput){
+    lastDateInput.addEventListener('blur', function(){
+      const uplodeStep = document.querySelector('[data-box="uplode"]');
+      if(uplodeStep.classList.contains("locked") && lastDateInput.value.trim()!=="" && document.querySelectorAll(".Our_Services_box input[type='checkbox']:checked").length>0){
+        unlockStep(uplodeStep);
+        uplodeStep.scrollIntoView({behavior:"smooth", inline:"start"});
+      }
+    });
+  }
+
+  // ✅ Unlock Submit step after file uploaded
+  if(uploadInput){
+    uploadInput.addEventListener('change', function(){
+      const submitStep = document.querySelector('[data-box="submit-box"]');
+      if(submitStep.classList.contains("locked")){
+        unlockStep(submitStep);
+        submitStep.scrollIntoView({behavior:"smooth", inline:"start"});
+      }
+    });
+  }
+
+  // ✅ Form Submit
+  submitBtn.addEventListener("click", async function(e){
+    e.preventDefault();
+
+const requiredFields = form.querySelectorAll("input[required], select[required]");
+    for(let field of requiredFields){
+      if(!field.value.trim()){
+        Swal.fire("Missing Field", `Please fill out ${field.name||field.placeholder}`, "warning");
+        field.focus();
+        return;
+      }
+    }
+
+    // ✅ Phone Validation (exactly 10 digits)
+    let phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(form.phone.value.trim())) {
+      Swal.fire("Invalid Phone", "Please enter a valid 10-digit phone number.", "error");
+      form.phone.focus();
+      return;
+    }
+
+  let vehicleValue = form.ref_no.value.trim();
+let vehicleRegex = /^[A-Za-z0-9]+$/; // only letters and numbers
+
+if (vehicleValue.length < 6 || !vehicleRegex.test(vehicleValue)) {
+  Swal.fire({
+    icon: "error",
+    title: "Invalid Vehicle Number",
+    text: "Vehicle number must be at least 6 characters long and contain only letters and numbers."
+  });
+  form.model.focus();
+  return;
+}
+    // ✅ Terms & Conditions check
+    if(!document.querySelector("#aggree")?.checked){
+      Swal.fire("Wait!", "Please agree to Terms & Conditions.", "info");
+      return;
+    }
+
+
+
+
+    const { selectedServices, warrantyType, coverageArea } = getServiceData();
+
+    const fileInput = document.querySelector("#fileInput");
+    let modelSelect = form.model;
+let otherModelInput = document.getElementById("OtherModel");
+let modelValue = modelSelect.value;
+
+if (modelValue === "Other" && otherModelInput && otherModelInput.value.trim() !== "") {
+  modelValue = otherModelInput.value.trim();
+}
+
+let storeSelect = form.store;
+let otherStoreInput = document.getElementById("OtherStore");
+let storeValue = storeSelect.value;
+
+if (storeValue === "Other" && otherStoreInput && otherStoreInput.value.trim() !== "") {
+  storeValue = otherStoreInput.value.trim();
+}
+
+    const formData = {
+
+
+      
+      fullname: form.fullname.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      brand: form.brand.value,
+      model: modelValue.trim(),
+      ref_no: form.ref_no.value,
+      year: form.year.value,
+      Color: form.Color.value,
+      services: selectedServices.join(", "),
+      warranty_type: warrantyType,
+      coverage_area: coverageArea,
+      store: storeValue.trim(),
+      dateInput: form.dateInput.value,
+      amount: document.querySelector('[data-box="submit-box"] input[type="text"]').value,
+      fileURL: fileInput.files.length>0 ? fileInput.files[0].name : ""
+    };
+
+    try{
+      await fetch("https://script.google.com/macros/s/AKfycbxuu26mUKQdPDszl0K3EmcNAGy0Uh_j4gNgmodxhJgaG3Gcje_N_S4esnYlrJ6iHrKi/exec", {
+        method:"POST",
+        mode:"no-cors",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(formData)
+      });
+
+      // Animation
+      const firstColumn = document.querySelector(".firstallinone");
+      const lastColumn = document.querySelector(".mylastcolumn");
+      firstColumn.classList.add("hide");
+      setTimeout(()=>{
+        firstColumn.style.display="none";
+        lastColumn.style.display="block";
+        setTimeout(()=>lastColumn.classList.add("show"),200);
+      },800);
+
+    }catch(err){ alert("Error submitting form"); console.error(err);}
+  });
 
 });
 </script>
