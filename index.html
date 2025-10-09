@@ -32,7 +32,7 @@
 <div>
         <h1>Service <br> Warranty Card</h1>
 <p>Please fill in the details below to <span class="d-block">activate your warranty service.</span></p>
-                      <div class="button-explore firstbtn"  >
+   <div class="button-explore firstbtn"  >
     <div class="button-inner">
       <div class="button-inner-text"> Get Covered <svg width="10" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M25.6641 15.0621L0.979807 29.3136L0.979809 0.810665L25.6641 15.0621Z" fill="white"/>
@@ -89,7 +89,7 @@
   <div class="input-row">
     <label>Vehicle Brand:</label>
      <select id="Brand" name="brand" class="form-select Brand"  required>
-  <option value="Audi " selected>Audi</option>
+  <option value="" selected>Audi</option>
   <option value="BMW">BMW</option>
   <option value="BYD">BYD</option>
   <option value="Chevrolet">Chevrolet</option>
@@ -122,7 +122,7 @@
     <label>Vehicle Model:</label>
 
   <select id="Model" class="form-select Model"  name="model" required>
-                      <option value="A3 Cabriolet" selected>A3 Cabriolet</option>
+                      <option value="" selected>A3 Cabriolet</option>
                     </select>
   </div>
     <div class="input-row"  >
@@ -233,7 +233,7 @@
         <h2><span class="d-block">PPF</span>Protection Coverage</h2>
 
   </div>
-<div class="subdetailbox checkboxservice">
+<div class="subdetailbox checkboxservice" data-service="ppf" >
   <div class="row gx-0 gy-4">
 
     <div class="col-6">
@@ -299,7 +299,7 @@
         <h2><span class="d-block">Ceramic</span>Coverage <br>Area</h2>
 
   </div>
-<div class="subdetailbox checkboxservice">
+<div class="subdetailbox checkboxservice" data-service="ceramic">
 
   <div class="row gx-0 gy-4">
 
@@ -362,7 +362,7 @@
         <h2><span class="d-block">Graphene</span>Coverage <br>Area</h2>
 
   </div>
-<div class="subdetailbox checkboxservice">
+<div class="subdetailbox checkboxservice" data-service="graphene">
 
   <div class="row gx-0 gy-4">
 
@@ -426,7 +426,7 @@
 </h2>
 
   </div>
-<div class="subdetailbox checkboxservice ">
+<div class="subdetailbox checkboxservice " data-service="windowfull">
 
   <div class="row gx-0 gy-4">
 
@@ -512,7 +512,7 @@
   <input type="file" id="fileInput" accept="image/*" hidden name="file">
   <label for="fileInput" class="upload-btn">Upload picture</label>
   <div class="plus">
-    <svg width="50" height="50" viewBox="0 0 108 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="30" height="30" viewBox="0 0 108 109" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M42.2356 108.198V65.8389H0.411558V43.2689H42.2356V0.910069H65.8752V43.2689H107.592V65.8389H65.8752V108.198H42.2356Z" fill="#EB4A14"/>
     </svg>
   </div>
@@ -555,7 +555,7 @@
 
   </div>
     </div> 
-      <div class="col-12  mylastcolumn">
+      <!-- <div class="col-12  mylastcolumn">
       <div class="  thankque  ">
         <div class="container text-center">
          <img src="./lastlogo.png" alt="" class="img-fluid mt-5 w-75 ">
@@ -564,7 +564,7 @@
       </div>
       <img src="./card-nord.png" alt="" class="img-fluid lastnordimg">
     </div>
-    </div>  
+    </div>   -->
   </div>
 </form>
 
@@ -1108,10 +1108,17 @@ document.addEventListener("DOMContentLoaded", function () {
   steps.forEach(step => step.classList.add("locked"));
 
   function unlockStep(step) { step.classList.remove("locked"); }
-  function allFilled(step) {
-    const inputs = step.querySelectorAll("input[required], select[required]");
-    return Array.from(inputs).every(input => input.value.trim() !== "");
-  }
+function allFilled(step) {
+  const inputs = step.querySelectorAll("input[required], select[required]");
+  return Array.from(inputs).every(input => {
+    if (input.tagName === "SELECT") {
+      return input.value.trim() !== "" && input.value !== "Select Brand" && input.value !== "Select Model";
+    }
+    return input.value.trim() !== "";
+  });
+}
+
+
 
   // ✅ Service Sub-Boxes Handling
   function initProtectionRadios(serviceBox) {
@@ -1177,35 +1184,74 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('.checkboxservice').forEach(initProtectionRadios);
 
   // ✅ Collect Service Data for Sheets
+// ✅ Collect Service Data for Sheets (Fixed for all services)
 function getServiceData() {
-  const selectedServices = Array.from(document.querySelectorAll(".Our_Services_box input[type='checkbox']:checked")).map(cb => cb.id);
+  const selectedServices = Array.from(document.querySelectorAll(".Our_Services_box input[type='checkbox']:checked"))
+                                .map(cb => cb.id);
+
   let warrantyType = '';
   let coverageArea = [];
 
+  // Maps for HTML attributes
+  const serviceMap = {
+    ppf: "ppf",
+    ceramic: "ceramic",
+    graphene: "graphene",
+    windowfilm: "windowfull"
+  };
+
+  const coverageNameMap = {
+    ppf: "ppf_coverage",
+    ceramic: "Ceramic_coverage",
+    graphene: "Graphene_coverage",
+    windowfilm: "Windowfilm_coverage"
+  };
+
   selectedServices.forEach(serviceId => {
+
     // ✅ Warranty/Type
-    if(serviceId === 'ppf') warrantyType += (document.querySelector('input[name="finish"]:checked')?.value || '');
-    if(serviceId === 'ceramic') warrantyType += (warrantyType?', ':'') + (document.querySelector('[data-box="ceramic_services"] select')?.value || '');
-    if(serviceId === 'graphene') warrantyType += (warrantyType?', ':'') + (document.querySelector('[data-box="graphene_services"] select')?.value || '');
-    if(serviceId === 'windowfilm') warrantyType += (warrantyType?', ':'') + (document.querySelector('[data-box="windowfilm_services"] select')?.value || '');
+    if(serviceId === 'ppf') {
+      const finish = document.querySelector('input[name="finish"]:checked')?.value;
+      if(finish) warrantyType += `PPF: ${finish}`;
+    }
+    if(serviceId === 'ceramic') {
+      const ceramicYear = document.querySelector('[data-box="ceramic_services"] select')?.value;
+      if(ceramicYear) warrantyType += (warrantyType ? ', ' : '') + `Ceramic: ${ceramicYear}`;
+    }
+    if(serviceId === 'graphene') {
+      const grapheneYear = document.querySelector('[data-box="graphene_services"] select')?.value;
+      if(grapheneYear) warrantyType += (warrantyType ? ', ' : '') + `Graphene: ${grapheneYear}`;
+    }
+    if(serviceId === 'windowfilm') {
+      const windowYear = document.querySelector('[data-box="windowfilm_services"] select')?.value;
+      if(windowYear) warrantyType += (warrantyType ? ', ' : '') + `Windowfilm: ${windowYear}`;
+    }
 
     // ✅ Coverage/Area
-    const serviceBox = document.querySelector(`[data-box="${serviceId}_services"]`);
-    if(!serviceBox) return;
+    const serviceBox = document.querySelector(`.subdetailbox.checkboxservice[data-service="${serviceMap[serviceId]}"]`);
+    if(serviceBox){
+      const checkedRadio = serviceBox.querySelector(`input[name="${coverageNameMap[serviceId]}"]:checked`);
+      if(checkedRadio){
+        if(checkedRadio.value === "full") {
+          coverageArea.push(`${serviceId}: Full Coverage`);
+        } else if(checkedRadio.value === "partial") {
+          // ✅ Collect all tags
+          const tagsContainer = serviceBox.querySelector('.selected-tags');
+          const tags = tagsContainer ? Array.from(tagsContainer.querySelectorAll('span'))
+                                        .map(s => s.textContent.replace(" ✓","")) : [];
+          
+          // ✅ Collect clicked dropdown items (active class)
+          const manualItems = Array.from(serviceBox.querySelectorAll('.dropdown-item'))
+                                    .filter(item => item.classList.contains('active'))
+                                    .map(item => item.getAttribute('data-value'));
 
-    // get checked radio
-    const checkedRadio = serviceBox.querySelector(`input[name="${serviceId}_coverage"]:checked`);
-    if(checkedRadio){
-      if(checkedRadio.value === "Full Coverage") {
-        coverageArea.push(`${serviceId}: Full Coverage`);
-      } else {
-        const tagsContainer = serviceBox.querySelector('.selected-tags');
-        const tags = tagsContainer ? Array.from(tagsContainer.querySelectorAll('span')).map(s => s.textContent) : [];
-        if(tags.length > 0){
-          coverageArea.push(`${serviceId}: ${tags.join(", ")}`);
+          const allParts = [...new Set([...tags, ...manualItems])]; // remove duplicates
+
+          coverageArea.push(`${serviceId}: ${allParts.length > 0 ? allParts.join(", ") : "Partial Coverage"}`);
         }
       }
     }
+
   });
 
   return { selectedServices, warrantyType, coverageArea: coverageArea.join(" | ") };
@@ -1219,22 +1265,34 @@ function getServiceData() {
   });
 
   // ✅ Auto Unlock Next Step
-  steps.forEach((step,index)=>{
-    if(index<3){
-      const inputs = step.querySelectorAll("input[required], select[required]");
-      const lastInput = inputs[inputs.length-1];
-      if(lastInput){
-        lastInput.addEventListener('blur', function(){
-          if(allFilled(step)){
-            if(index+1 < steps.length && steps[index+1].classList.contains("locked")){
-              unlockStep(steps[index+1]);
-              steps[index+1].scrollIntoView({behavior:"smooth", inline:isMobile?"center":"start"});
-            }
-          }
-        });
+// ✅ Auto Unlock Next Step when all required fields filled
+steps.forEach((step, index) => {
+  if (index < 3) {
+    const requiredFields = step.querySelectorAll("input[required], select[required], textarea[required]");
+
+    requiredFields.forEach(field => {
+      // Listen for typing, selecting, and focus leave
+      field.addEventListener("input", checkStep);
+      field.addEventListener("change", checkStep);
+      field.addEventListener("blur", checkStep);
+    });
+
+    function checkStep() {
+      // Run check whenever any required field changes or loses focus
+      if (allFilled(step)) {
+        const nextStep = steps[index + 1];
+        if (nextStep && nextStep.classList.contains("locked")) {
+          unlockStep(nextStep);
+          nextStep.scrollIntoView({ 
+            behavior: "smooth", 
+            inline: isMobile ? "center" : "start" 
+          });
+        }
       }
     }
-  });
+  }
+});
+
 
   // ✅ Show/hide service sub-boxes
   document.querySelectorAll(".Our_Services_box input[type='checkbox']").forEach(cb=>{
@@ -1283,6 +1341,7 @@ const requiredFields = form.querySelectorAll("input[required], select[required]"
         return;
       }
     }
+    
 
     // ✅ Phone Validation (exactly 10 digits)
     let phoneRegex = /^[0-9]{10}$/;
@@ -1313,6 +1372,7 @@ if (vehicleValue.length < 6 || !vehicleRegex.test(vehicleValue)) {
 
 
 
+    
     const { selectedServices, warrantyType, coverageArea } = getServiceData();
 
     const fileInput = document.querySelector("#fileInput");
@@ -1332,10 +1392,9 @@ if (storeValue === "Other" && otherStoreInput && otherStoreInput.value.trim() !=
   storeValue = otherStoreInput.value.trim();
 }
 
+
+
     const formData = {
-
-
-      
       fullname: form.fullname.value,
       phone: form.phone.value,
       email: form.email.value,
@@ -1346,7 +1405,7 @@ if (storeValue === "Other" && otherStoreInput && otherStoreInput.value.trim() !=
       Color: form.Color.value,
       services: selectedServices.join(", "),
       warranty_type: warrantyType,
-      coverage_area: coverageArea,
+   coverage_area: coverageArea,
       store: storeValue.trim(),
       dateInput: form.dateInput.value,
       amount: document.querySelector('[data-box="submit-box"] input[type="text"]').value,
@@ -1354,7 +1413,7 @@ if (storeValue === "Other" && otherStoreInput && otherStoreInput.value.trim() !=
     };
 
     try{
-      await fetch("https://script.google.com/macros/s/AKfycbxuu26mUKQdPDszl0K3EmcNAGy0Uh_j4gNgmodxhJgaG3Gcje_N_S4esnYlrJ6iHrKi/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbxjIZBA-EZsCBNt5SVzs100OSfjcT8tqOWnB36Q5JsaPNyYTe1FMkzjI-Cv_qn9Gi54tg/exec", {
         method:"POST",
         mode:"no-cors",
         headers:{"Content-Type":"application/json"},
@@ -1473,4 +1532,3 @@ modelSelect.addEventListener("change", function () {
 </script>
   </body>
 </html>
-
