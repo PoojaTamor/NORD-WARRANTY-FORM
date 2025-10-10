@@ -329,6 +329,7 @@ font-size: 4rem;
   border-radius: 10px;
  flex: 0 0 35%; 
  min-width: 35%;
+ height: 80vh;
   background-color: #2E2E2E;         /* 40% width for other boxes */
     box-sizing: border-box; /* include padding in width */
 
