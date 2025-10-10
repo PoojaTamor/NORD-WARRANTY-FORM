@@ -150,7 +150,7 @@ height: 100vh ;
     }
 
       .first-slide-box h1{
-        font-size: 6.5rem;
+        font-size:8rem;
         line-height: 1;
 font-weight: 600;
 letter-spacing: -0.02em;
@@ -160,7 +160,7 @@ padding-top: 40px;
       }
 
         .first-slide-box p{
-font-size: 1.2rem;
+font-size: 1.4rem;
 font-weight: 500;
 line-height: 1;
 color: #FFFFFF;
@@ -205,6 +205,7 @@ color: #fff;
   height: 100vh;
   overflow-x: hidden;
   gap: 50px;
+  align-items: center;
   transition: scroll-left 0.6s ease;
 }
 
@@ -225,6 +226,7 @@ color: #fff;
   scroll-snap-align: start;  /* snap at start */
   padding: 40px;
   border-radius: 10px;
+  height: 80vh;
 }
 
 
